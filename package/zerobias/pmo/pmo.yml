@@ -24,7 +24,7 @@ notes:
     - name: Meeting notes
     - name: Items
 documents:
-  folders: [Specs, Mockups, Reviews, Diagrams, Archive]
+  folders: [Specs, Mockups, Reviews, Diagrams, Meetings, Archive]
 tasks:
   - board: specs
     name: 'Spec: ${projectName}'
