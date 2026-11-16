@@ -137,6 +137,9 @@ are private to that org.
 - A new version does not change projects that already exist. A project keeps
   what it was created with.
 - To retire one template, delete its yml. The next load removes it.
+- A package must keep at least one template yml. A package with no `*.yml` at
+  its root fails the load, and the load does not delete its templates. To
+  retire the last template, use `"deprecated": true` instead.
 - To retire every template in a package, set `"deprecated": true` in the
   `zerobias` section of `package.json`.
 

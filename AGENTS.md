@@ -75,6 +75,7 @@ Do not add these. The loader does not read them:
 - Use `zbb` for every build command. Never run `./gradlew`. Gradle fails on Java 25, and zbb selects Java 21.
 - Do not add `deprecated.yml`. The loader reads it as a template.
 - To retire a template, delete its yml.
+- Keep at least one template yml in each package. A package with no `*.yml` at its root fails the load. The load does not delete the package's templates in that case.
 - To retire every template in a package, set `"deprecated": true` in the `zerobias` section of `package.json`.
 - Do not set `orgId` in `package.json` for a public template.
 - Do not put files that are not templates directly in a package folder as `*.yml`.
