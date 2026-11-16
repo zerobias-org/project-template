@@ -5,7 +5,7 @@
 id: REPLACE-WITH-NEW-UUID                # required. New lowercase UUID: uuidgen | tr A-Z a-z. Never reuse or change it
 name: REPLACE-WITH-TEMPLATE-NAME         # required. Name the user sees in the Create Project dialog
 description: REPLACE-WITH-DESCRIPTION    # required. What a project made from this template is for
-imageUrl: https://example.com/image.png  # optional. Image for the template; delete to use the default icon
+# imageUrl: https://...                  # optional. Image for the template. Delete the # and set a real URL; left out, the default icon is used
 keywords: [example, starter]             # optional. Search terms
 
 projectType: REPLACE-WITH-PROJECT-TYPE   # required. standard | program | coordination_program | phase | assessment | engagement | rfp | pilot
