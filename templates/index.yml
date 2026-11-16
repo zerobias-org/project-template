@@ -1,0 +1,10 @@
+id: {id}
+name: {name}
+description: {description}
+code: {code}
+externalId: {externalId}
+url: {url}
+version: {version}
+status: approved
+tags: []
+aliases: []

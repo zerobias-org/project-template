@@ -1,0 +1,10 @@
+id: 00000000-0000-0000-0000-000000000000
+name: Example Artifact
+description: Replace with actual description
+code: example_example_suite_v1
+externalId: Example v1
+url: https://example.com
+version: v1
+status: approved
+tags: []
+aliases: []
