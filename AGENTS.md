@@ -10,7 +10,7 @@ Read [`README.md`](README.md) first. It defines the fields and the package layou
 - Make a new `id` with `uuidgen`. Never copy an `id` from another template.
 - Name each activity by its code. Never put an activity id in a template.
 - Use `${projectName}` only. No other placeholder exists.
-- Give exactly one board `default: true`.
+- Give exactly one board `isDefault: true`.
 - Each task names a board by its `key`. The key must exist in `boards`.
 - Do not set `orgId` in `package.json` for a public template.
 - Do not add `deprecated.yml`. To retire a template, delete its yml.

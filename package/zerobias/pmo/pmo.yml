@@ -7,7 +7,7 @@ lifecycle: evergreen
 boards:
   - key: specs
     name: Specs & Stories
-    default: true
+    isDefault: true
     activities: [pmSpec, pmStory, pmRelease, task]
   - key: decisions
     name: Decisions & Questions

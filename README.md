@@ -72,7 +72,7 @@ The dataloader is the source of truth. This is the v1 format.
 | `keywords` | no | search aliases |
 | `projectType` | yes | for example `coordination_program`. Cannot change after the project is created |
 | `lifecycle` | yes | `evergreen` or `fixed-term`. Cannot change after the project is created. Some types allow only one (`coordination_program` is evergreen only) |
-| `boards[]` | yes | `key` (local, used by `tasks`), `name`, `default` (one board; the project's default board gets this name), `activities` (activity codes) |
+| `boards[]` | yes | `key` (local, used by `tasks`), `name`, `isDefault` (`true` on exactly one board; the project's default board gets this name), `activities` (activity codes) |
 | `notes.notebooks[]` | no | `name` of each Notes notebook |
 | `documents.folders[]` | no | Documents folder names |
 | `tasks[]` | no | `board` (a board `key`), `name`, `activity` (a code), `description` |
