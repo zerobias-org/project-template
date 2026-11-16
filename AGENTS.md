@@ -1,44 +1,91 @@
 # AGENTS.md
 
-Instructions for an agent that adds or changes a project template in this repo.
-Read [`README.md`](README.md) first. It defines the fields and the package layout.
+Instructions for an AI agent that adds or changes a project template in this repo.
+[`README.md`](README.md) explains how templates work and lists every field.
 
-## Rules
+## What a template is
 
-- One template is one `*.yml` at the root of a package: `package/<owner>/<name>/<template>.yml`.
-- A package can hold more than one template. Each template has its own `id`.
-- Make a new `id` with `uuidgen`. Never copy an `id` from another template.
-- Name each activity by its code. Never put an activity id in a template.
-- Use `${projectName}` only. No other placeholder exists.
-- Give exactly one board `isDefault: true`.
-- Each task names a board by its `key`. The key must exist in `boards`.
-- Do not set `orgId` in `package.json` for a public template.
-- Do not add `deprecated.yml`. To retire a template, delete its yml.
-- Use `zbb` for every build command. Never run `./gradlew`. Gradle fails on Java 25, and zbb selects Java 21.
+A template is one `*.yml` file directly in a package folder `package/<vendor>/<name>/`.
+A user creates a project from it in the Projects App.
+The project starts with the template's type, lifecycle, boards, board activities, notebooks, Documents folders and starter tasks.
 
 ## Add a template
 
-1. Choose the package. Use an existing package, or make `package/<owner>/<name>/`.
-2. For a new package, copy `package/zerobias/pmo/package.json`, `.npmrc` and `build.gradle.kts`.
-3. In the new `package.json`, set `name` to `@zerobias-org/project-template-<owner>-<name>`.
-4. Set `zerobias.package` to `<owner>.<name>.project_template`.
-5. Write the template yml at the package root. Use the fields in `README.md`.
-6. Run `unset ZB_SLOT`, then `zbb :<owner>:<name>:gate` from the repo root.
-7. Fix each failure. Run the gate again until it passes.
-8. Open `gate-stamp.json`. Make sure that `testDataloader` is `"passed"`.
-9. Commit `gate-stamp.json` with the package.
+1. Run `sh scripts/new-template.sh <vendor> <name>`. Use lowercase letters, digits and `_` only.
+2. Open `package/<vendor>/<name>/<name>.yml`.
+3. Replace every `REPLACE-…` value. Read the comment on each line.
+4. Delete the fields that you do not need. Keep every required field.
+5. Do the checklist below.
 
-## Change a template
+To add a second template to an existing package:
 
-1. Keep the `id`. The platform links each created project to the template version.
-2. Edit the yml.
-3. Run the gate on the package.
-4. Commit the yml and the new `gate-stamp.json` together.
+1. Copy `templates/starter/starter.yml` into the package folder.
+2. Give the file a new name.
+3. Set `id` to a new UUID: `uuidgen | tr A-Z a-z`.
+4. Do steps 3 to 5 above.
 
-## Commits
+## Checklist: do every step before you open a PR
 
-- Use Conventional Commits. Scope: `project-template-<owner>-<name>`.
+1. Give each new template a new lowercase UUID as `id`. Make it with `uuidgen | tr A-Z a-z`. Never copy an `id` from another template. Never change the `id` of a released template.
+2. Make `projectType` and `lifecycle` a valid pair. They cannot change after a project exists. Use this matrix from `zerobias-com/platform` `api/src/api/schemas/project/newProject.yml`:
+   - `standard`: `fixed-term` or `evergreen`
+   - `program`: `evergreen` only
+   - `coordination_program`: `evergreen` only
+   - `phase`: `fixed-term` only, and the project needs a `coordination_program` parent
+   - `assessment`: `fixed-term` only
+   - `engagement`, `rfp`, `pilot`: `fixed-term` or `evergreen`
+3. Give exactly one board `isDefault: true`. The project's default board gets that board's name.
+4. Make each board `key` unique in the file. Make each task's `board` one of those keys.
+5. Write activities as codes, never as ids. Each code must be loaded on the target environment, or the load fails. A private template can also use activity codes that its own org owns.
+6. Make each task's `activity` one of the activities of its board.
+7. Use only the placeholder `${projectName}`. Put quotes around a value that contains it.
+8. Do not put secrets in a template.
+9. Run `unset ZB_SLOT`, then `zbb :<vendor>:<name>:validateContent`. Fix each failure. Do this before each push.
+
+## Activity codes
+
+These are the activity codes for project management:
+
+| Code | Use |
+|---|---|
+| `task` | a general task |
+| `pmSpec` | a specification |
+| `pmStory` | a user story |
+| `pmRelease` | a release |
+| `pmQuestion` | an open question |
+| `pmDecision` | a decision |
+| `pmResearch` | research |
+
+- `task` is on every environment.
+- The `pm*` codes are on CI and QA. They are on PROD after the Product Management content deploys there.
+- Before you use a code, check the list on the target environment. Use the ZeroBias MCP call `platform.Activity.list`, with `profile` set to the target environment.
+
+## Not in v1
+
+Do not add these. The loader does not read them:
+
+- starter note text (notebooks are names only)
+- custom field defaults
+- role assignments
+- child projects
+- save a project as a template
+
+## Rules for the repo
+
+- Use `zbb` for every build command. Never run `./gradlew`. Gradle fails on Java 25, and zbb selects Java 21.
+- Do not add `deprecated.yml`. The loader reads it as a template.
+- To retire a template, delete its yml.
+- To retire every template in a package, set `"deprecated": true` in the `zerobias` section of `package.json`.
+- Do not set `orgId` in `package.json` for a public template.
+- Do not put files that are not templates directly in a package folder as `*.yml`.
+
+## Commits and PRs
+
+- Use Conventional Commits. Scope: `project-template-<vendor>-<name>`.
 - Example: `feat(project-template-zerobias-pmo): add the PMO template`.
+- Open each PR as a draft.
+- Put the line `ZeroBias task: <code>` in the PR body.
+- Do not add Claude attribution to commits or PRs.
 
 ## Build token
 
@@ -49,4 +96,4 @@ gh auth refresh -s read:packages && export GITHUB_TOKEN=$(gh auth token)
 ```
 
 A 401 from `maven.pkg.github.com` or `Plugin [id: 'zb.workspace'] was not found` means the scope is missing.
-Run the command above and retry. Do not skip the gate.
+Run the command above and retry. Do not skip validation.

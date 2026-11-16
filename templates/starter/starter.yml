@@ -1,0 +1,35 @@
+# Starter project template. scripts/new-template.sh copies this file into a package.
+# Replace every REPLACE-... value. Delete optional fields you do not need.
+# Field reference: README.md. Checklist: AGENTS.md.
+
+id: REPLACE-WITH-NEW-UUID                # required. New lowercase UUID: uuidgen | tr A-Z a-z. Never reuse or change it
+name: REPLACE-WITH-TEMPLATE-NAME         # required. Name the user sees in the Create Project dialog
+description: REPLACE-WITH-DESCRIPTION    # required. What a project made from this template is for
+imageUrl: https://example.com/image.png  # optional. Image for the template; delete to use the default icon
+keywords: [example, starter]             # optional. Search terms
+
+projectType: REPLACE-WITH-PROJECT-TYPE   # required. standard | program | coordination_program | phase | assessment | engagement | rfp | pilot
+lifecycle: REPLACE-WITH-LIFECYCLE        # required. fixed-term | evergreen. Must be a valid pair with projectType (README.md)
+
+boards:                                  # required. At least one board
+  - key: main                            # required. Local key, unique in this file. Tasks name it in `board`
+    name: Main                           # required. Board name
+    isDefault: true                      # exactly one board. The project's default board gets this name
+    activities: [task]                   # required. Activity codes the board allows. Codes, never ids
+  - key: decisions
+    name: Decisions & Questions
+    activities: [pmQuestion, pmDecision, task]   # pm* codes: CI and QA now, PROD after Product Management deploys
+
+notes:                                   # optional
+  notebooks:                             # Notes notebooks. Names only in v1
+    - name: Meeting notes
+    - name: Status updates
+
+documents:                               # optional
+  folders: [Specs, Reviews, Archive]     # Documents folder names
+
+tasks:                                   # optional. Starter tasks
+  - board: main                          # required. A board key from above
+    name: 'Kickoff: ${projectName}'      # required. ${projectName} is the only placeholder; quote the value
+    activity: task                       # required. One of the activities of its board
+    description: Agree the scope and the first milestones.   # optional
