@@ -1,0 +1,32 @@
+id: 7d10f7c5-4a23-4174-9a2c-0787ae312474
+name: PMO project
+description: A project run with the PMO recipe. Four boards, a notebook for status updates, meeting notes and work items, and Documents folders.
+keywords: [pmo, program]
+projectType: coordination_program
+lifecycle: evergreen
+boards:
+  - key: specs
+    name: Specs & Stories
+    default: true
+    activities: [pmSpec, pmStory, pmRelease, task]
+  - key: decisions
+    name: Decisions & Questions
+    activities: [pmQuestion, pmDecision, pmResearch, task]
+  - key: mockups
+    name: Mockups
+    activities: [task]
+  - key: risks
+    name: Risks & Dependencies
+    activities: [task]
+notes:
+  notebooks:
+    - name: Status updates
+    - name: Meeting notes
+    - name: Items
+documents:
+  folders: [Specs, Mockups, Reviews, Diagrams, Archive]
+tasks:
+  - board: specs
+    name: 'Spec: ${projectName}'
+    activity: pmSpec
+    description: The product spec. Feature specs are subtasks.
