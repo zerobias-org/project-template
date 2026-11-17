@@ -43,14 +43,15 @@ To add a second template to an existing package:
 8. Do not put secrets in a template or a starter file.
 9. For each entry in `documents.files`, put the file at its `source` path in the package. Set `folder` to `''` or to a name in `documents.folders`. Keep each file UTF-8 text and 64 KiB or less.
 10. If the package has a `files/` folder, make sure `files/**` is in the `files` list of `package.json`.
-11. If the template has `skill`, make sure `skills/<skill.name>/SKILL.md` exists and its front matter `name` is `skill.name`.
+11. If the template has `skill`, make sure `files/skills/<skill.name>/SKILL.md` exists in the package and its front matter `name` is `skill.name`.
 12. Run `unset ZB_SLOT`, then `zbb :<vendor>:<name>:validateContent`. Fix each failure. Do this before each push.
 
 ## Starter files and the skill
 
 - Put a starter file in `package/<vendor>/<name>/files/`. List it in `documents.files` with `folder`, `name` and `source`.
-- Write a skill in `skills/<name>/SKILL.md` at the repo root. Never put it in a package folder.
-- Set `skill.install` to `/plugin install project-templates@zerobias-marketplace`. The repo is the plugin `project-templates`.
+- Write a skill in `files/skills/<name>/SKILL.md` in the package. Keep one copy only.
+- Add `Skills` to `documents.folders`. Add the skill to `documents.files` with folder `Skills`, name `<name>-SKILL.md` and source `files/skills/<name>/SKILL.md`.
+- Set `skill.url` to the `SKILL.md` on `main`. Set `skill.install` to `Copy Documents/Skills/<name>-SKILL.md to .claude/skills/<name>/SKILL.md`.
 - The skill operates the project through the ZeroBias API. Name each API call in it. Check each call with the ZeroBias MCP `zerobias_describe`.
 - Give a template with a skill an `OPERATING.md` starter file in the Documents root. It names the template and the skill. It says how to install the skill and how to get ZeroBias MCP or API access. See `package/zerobias/pmo/files/OPERATING.md`.
 

@@ -34,7 +34,7 @@ cp "$SRC/.npmrc" "$SRC/build.gradle.kts" "$DIR/"
 mkdir -p "$DIR/files"
 sed -e "s/REPLACE-VENDOR/$VENDOR/g" -e "s/REPLACE-NAME/$NAME/g" "$SRC/files/OPERATING.md" > "$DIR/files/OPERATING.md"
 sed -e "s/REPLACE-VENDOR/$VENDOR/g" -e "s/REPLACE-NAME/$NAME/g" "$SRC/package.json" > "$DIR/package.json"
-sed -e "s/REPLACE-WITH-NEW-UUID/$ID/" "$SRC/starter.yml" > "$DIR/$NAME.yml"
+sed -e "s/REPLACE-WITH-NEW-UUID/$ID/" -e "s/REPLACE-VENDOR/$VENDOR/g" -e "s/REPLACE-NAME/$NAME/g" "$SRC/starter.yml" > "$DIR/$NAME.yml"
 
 echo "Created $DIR"
 echo "  template: $NAME.yml (id $ID)"

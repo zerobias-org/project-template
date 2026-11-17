@@ -56,10 +56,9 @@ package/
         ├── .npmrc                   #   byte-identical copy of the repo-root .npmrc
         ├── build.gradle.kts         #   plugins { id("zb.content") }
         ├── pmo.yml                  #   one template per *.yml file in the package folder
-        └── files/OPERATING.md       #   a starter file; pmo.yml names it in documents.files
-skills/
-└── pmo-project/SKILL.md             # the agent skill named in pmo.yml; not in the published package
-.claude-plugin/plugin.json           # makes this repo the Claude Code plugin project-templates
+        └── files/                   #   starter files; pmo.yml names each in documents.files
+            ├── OPERATING.md         #     goes to the Documents root
+            └── skills/pmo-project/SKILL.md   # the pmo-project skill; goes to Documents/Skills
 templates/starter/                   # the starter package; never published (see "Add a template")
 scripts/new-template.sh              # copies the starter into package/<vendor>/<name>/
 bundle/                              # @zerobias-org/project-template-bundle (workflow-managed)
@@ -74,7 +73,7 @@ bundle/                              # @zerobias-org/project-template-bundle (wo
 
 | Package | Template | Source |
 |---|---|---|
-| `zerobias/pmo` | PMO project | the PMO recipe: a `coordination_program`, four boards (Specs & Stories, Decisions & Questions, Mockups, Risks & Dependencies), three notebooks, six Documents folders, `OPERATING.md` in the Documents root, a starter spec task, and the `pmo-project` skill |
+| `zerobias/pmo` | PMO project | the PMO recipe: a `coordination_program`, four boards (Specs & Stories, Decisions & Questions, Mockups, Risks & Dependencies), three notebooks, seven Documents folders, `OPERATING.md` in the Documents root, the `pmo-project` skill in the Skills folder, a starter spec task |
 
 The PMO template uses the Product Management activities. They are on CI and
 QA, and on PROD after the Product Management content deploys there. The load
@@ -106,8 +105,8 @@ fails on an environment that does not have them.
 | `skill` | no | The agent skill that operates projects made from this template. The Create Project dialog shows it. The platform does not install it |
 | `skill.name` | yes | The `name` in the skill's `SKILL.md` front matter |
 | `skill.description` | yes | One line: what the skill does |
-| `skill.url` | yes | Link to the skill folder in this repo: `skills/<name>/` on `main` |
-| `skill.install` | yes | The command that installs the skill |
+| `skill.url` | yes | Link to the skill's `SKILL.md` in this repo on `main` |
+| `skill.install` | yes | One line that tells the user how to install the skill from the project |
 | `tasks` | no | List of starter tasks |
 | `tasks[].board` | yes | The `key` of the task's board |
 | `tasks[].name` | yes | Task name. `${projectName}` and `${projectId}` are allowed |
@@ -151,11 +150,12 @@ uploads the file.
 
 A template can name an agent skill in `skill`. The skill lets the customer's
 AI agent operate a project made from the template through the ZeroBias API.
-Write the skill in `skills/<name>/SKILL.md` at the repo root. `skills/` is
-outside every package, so the skill is not part of the published template.
-This repo is the Claude Code plugin `project-templates`
-(`.claude-plugin/plugin.json`), so every skill in `skills/` installs with
-`/plugin install project-templates@zerobias-marketplace`.
+The skill ships as a starter file. Write it in
+`files/skills/<name>/SKILL.md` in the package. Add a `Skills` folder to
+`documents.folders`, and list the skill in `documents.files` with folder
+`Skills` and name `<name>-SKILL.md`. Keep one copy of each skill. The user
+copies the file to `.claude/skills/<name>/SKILL.md`. The project keeps the copy
+made at create, so a later template version does not change it.
 Give each template with a skill a starter file such as `OPERATING.md` that
 names the template and the skill, and says how to install the skill and how to
 get ZeroBias MCP or API access.

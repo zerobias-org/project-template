@@ -7,7 +7,7 @@ This file is for the AI agent that helps you run this project. Give it this file
 | Project | ${projectName} |
 | Project id | `${projectId}` |
 | Made from template | REPLACE-WITH-TEMPLATE-NAME (`@zerobias-org/project-template-REPLACE-VENDOR-REPLACE-NAME`) |
-| Skill that operates it | `REPLACE-SKILL-NAME` |
+| Skill that operates it | `REPLACE-SKILL-NAME`, in the Documents folder `Skills` as `REPLACE-SKILL-NAME-SKILL.md` |
 
 ## What the project has
 
