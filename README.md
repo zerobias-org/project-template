@@ -59,6 +59,7 @@ package/
         └── files/OPERATING.md       #   a starter file; pmo.yml names it in documents.files
 skills/
 └── pmo-project/SKILL.md             # the agent skill named in pmo.yml; not in the published package
+.claude-plugin/plugin.json           # makes this repo the Claude Code plugin project-templates
 templates/starter/                   # the starter package; never published (see "Add a template")
 scripts/new-template.sh              # copies the starter into package/<vendor>/<name>/
 bundle/                              # @zerobias-org/project-template-bundle (workflow-managed)
@@ -152,6 +153,9 @@ A template can name an agent skill in `skill`. The skill lets the customer's
 AI agent operate a project made from the template through the ZeroBias API.
 Write the skill in `skills/<name>/SKILL.md` at the repo root. `skills/` is
 outside every package, so the skill is not part of the published template.
+This repo is the Claude Code plugin `project-templates`
+(`.claude-plugin/plugin.json`), so every skill in `skills/` installs with
+`/plugin install project-templates@zerobias-marketplace`.
 Give each template with a skill a starter file such as `OPERATING.md` that
 names the template and the skill, and says how to install the skill and how to
 get ZeroBias MCP or API access.

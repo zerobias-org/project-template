@@ -50,6 +50,7 @@ To add a second template to an existing package:
 
 - Put a starter file in `package/<vendor>/<name>/files/`. List it in `documents.files` with `folder`, `name` and `source`.
 - Write a skill in `skills/<name>/SKILL.md` at the repo root. Never put it in a package folder.
+- Set `skill.install` to `/plugin install project-templates@zerobias-marketplace`. The repo is the plugin `project-templates`.
 - The skill operates the project through the ZeroBias API. Name each API call in it. Check each call with the ZeroBias MCP `zerobias_describe`.
 - Give a template with a skill an `OPERATING.md` starter file in the Documents root. It names the template and the skill. It says how to install the skill and how to get ZeroBias MCP or API access. See `package/zerobias/pmo/files/OPERATING.md`.
 

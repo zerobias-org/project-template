@@ -15,7 +15,7 @@ lifecycle: REPLACE-WITH-LIFECYCLE        # required. fixed-term | evergreen. Mus
 #   name: REPLACE-SKILL-NAME             # the name in skills/<name>/SKILL.md front matter
 #   description: REPLACE-WITH-ONE-LINE   # what the skill does
 #   url: https://github.com/zerobias-org/project-template/tree/main/skills/REPLACE-SKILL-NAME
-#   install: /plugin install zb@zerobias-marketplace
+#   install: /plugin install project-templates@zerobias-marketplace
 
 boards:                                  # required. At least one board
   - key: main                            # required. Local key, unique in this file. Tasks name it in `board`
