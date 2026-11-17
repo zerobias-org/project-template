@@ -11,6 +11,12 @@ keywords: [example, starter]             # optional. Search terms
 projectType: REPLACE-WITH-PROJECT-TYPE   # required. standard | program | coordination_program | phase | assessment | engagement | rfp | pilot
 lifecycle: REPLACE-WITH-LIFECYCLE        # required. fixed-term | evergreen. Must be a valid pair with projectType (README.md)
 
+# skill:                                 # optional. The agent skill that operates projects made from this template
+#   name: REPLACE-SKILL-NAME             # the name in skills/<name>/SKILL.md front matter
+#   description: REPLACE-WITH-ONE-LINE   # what the skill does
+#   url: https://github.com/zerobias-org/project-template/tree/main/skills/REPLACE-SKILL-NAME
+#   install: /plugin install zb@zerobias-marketplace
+
 boards:                                  # required. At least one board
   - key: main                            # required. Local key, unique in this file. Tasks name it in `board`
     name: Main                           # required. Board name
@@ -27,9 +33,13 @@ notes:                                   # optional
 
 documents:                               # optional
   folders: [Specs, Reviews, Archive]     # Documents folder names
+  files:                                 # starter files the project gets
+    - folder: ''                         # '' = the Documents root, or a name from folders
+      name: OPERATING.md                 # file name in the project
+      source: files/OPERATING.md         # path in this package. UTF-8 text, 64 KiB or less
 
 tasks:                                   # optional. Starter tasks
   - board: main                          # required. A board key from above
-    name: 'Kickoff: ${projectName}'      # required. ${projectName} is the only placeholder; quote the value
+    name: 'Kickoff: ${projectName}'      # required. Placeholders: ${projectName}, ${projectId}. Quote the value
     activity: task                       # required. One of the activities of its board
     description: Agree the scope and the first milestones.   # optional

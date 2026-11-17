@@ -15,6 +15,7 @@
   },
   "files": [
     "*.yml",
+    "files/**",
     "npm-shrinkwrap.json"
   ],
   "zerobias": {

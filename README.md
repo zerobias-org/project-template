@@ -10,8 +10,9 @@ starts with what the template defines:
 - the project type and lifecycle
 - the boards, and the activities each board allows
 - the Notes notebooks
-- the Documents folders
+- the Documents folders, and starter files in them
 - the starter tasks
+- the name of an agent skill that operates projects made from it
 
 The user names the project. Everything else comes from the template, and the
 user can change it after the project exists (except the type and lifecycle,
@@ -54,7 +55,10 @@ package/
         │                            #   zerobias.import-artifact = project_template
         ├── .npmrc                   #   byte-identical copy of the repo-root .npmrc
         ├── build.gradle.kts         #   plugins { id("zb.content") }
-        └── pmo.yml                  #   one template per *.yml file in the package folder
+        ├── pmo.yml                  #   one template per *.yml file in the package folder
+        └── files/OPERATING.md       #   a starter file; pmo.yml names it in documents.files
+skills/
+└── pmo-project/SKILL.md             # the agent skill named in pmo.yml; not in the published package
 templates/starter/                   # the starter package; never published (see "Add a template")
 scripts/new-template.sh              # copies the starter into package/<vendor>/<name>/
 bundle/                              # @zerobias-org/project-template-bundle (workflow-managed)
@@ -69,7 +73,7 @@ bundle/                              # @zerobias-org/project-template-bundle (wo
 
 | Package | Template | Source |
 |---|---|---|
-| `zerobias/pmo` | PMO project | the PMO recipe: a `coordination_program`, four boards (Specs & Stories, Decisions & Questions, Mockups, Risks & Dependencies), three notebooks, six Documents folders, a starter spec task |
+| `zerobias/pmo` | PMO project | the PMO recipe: a `coordination_program`, four boards (Specs & Stories, Decisions & Questions, Mockups, Risks & Dependencies), three notebooks, six Documents folders, `OPERATING.md` in the Documents root, a starter spec task, and the `pmo-project` skill |
 
 The PMO template uses the Product Management activities. They are on CI and
 QA, and on PROD after the Product Management content deploys there. The load
@@ -94,11 +98,20 @@ fails on an environment that does not have them.
 | `notes.notebooks` | no | List of Notes notebooks |
 | `notes.notebooks[].name` | yes | Notebook name |
 | `documents.folders` | no | List of Documents folder names |
+| `documents.files` | no | List of starter files. The project gets each file in its folder |
+| `documents.files[].folder` | yes | `''` for the Documents root, or a name from `documents.folders` |
+| `documents.files[].name` | yes | File name in the project. Unique in its folder |
+| `documents.files[].source` | yes | Path of the file in the package, relative to the template yml. UTF-8 text, 64 KiB or less. `${projectName}` and `${projectId}` are allowed in the text |
+| `skill` | no | The agent skill that operates projects made from this template. The Create Project dialog shows it. The platform does not install it |
+| `skill.name` | yes | The `name` in the skill's `SKILL.md` front matter |
+| `skill.description` | yes | One line: what the skill does |
+| `skill.url` | yes | Link to the skill folder in this repo: `skills/<name>/` on `main` |
+| `skill.install` | yes | The command that installs the skill |
 | `tasks` | no | List of starter tasks |
 | `tasks[].board` | yes | The `key` of the task's board |
-| `tasks[].name` | yes | Task name. `${projectName}` is allowed |
+| `tasks[].name` | yes | Task name. `${projectName}` and `${projectId}` are allowed |
 | `tasks[].activity` | yes | Activity code. Must be one of its board's activities |
-| `tasks[].description` | no | Task description. `${projectName}` is allowed |
+| `tasks[].description` | no | Task description. `${projectName}` and `${projectId}` are allowed |
 
 ### Type and lifecycle pairs
 
@@ -121,9 +134,27 @@ From `zerobias-com/platform` `api/src/api/schemas/project/newProject.yml`:
 4. Board keys are unique in the file. Each task's `board` is one of those keys.
 5. Activities are codes, never ids. Each code must be loaded on the target environment, or the load fails. A private template can also use activity codes that its own org owns.
 6. Each task's `activity` is one of the activities of its board.
-7. The only placeholder is `${projectName}`. Quote a value that contains it.
-8. No secrets in a template.
-9. Run `zbb validateContent` before each push.
+7. The only placeholders are `${projectName}` and `${projectId}`. Quote a yml value that contains one.
+8. No secrets in a template or a starter file.
+9. Each `documents.files[].source` exists in the package, and each `folder` is `''` or in `documents.folders`. No two files share a folder and name.
+10. Run `zbb validateContent` before each push.
+
+## Starter files and the skill
+
+A template can create text files in the new project's Documents folders. Put
+each file under `files/` in the package, and list it in `documents.files`. The
+package's `files` list in `package.json` must include `files/**`, or the file
+is not published. The loader stores the file text with the template version.
+At create, the platform fills in `${projectName}` and `${projectId}` and
+uploads the file.
+
+A template can name an agent skill in `skill`. The skill lets the customer's
+AI agent operate a project made from the template through the ZeroBias API.
+Write the skill in `skills/<name>/SKILL.md` at the repo root. `skills/` is
+outside every package, so the skill is not part of the published template.
+Give each template with a skill a starter file such as `OPERATING.md` that
+names the template and the skill, and says how to install the skill and how to
+get ZeroBias MCP or API access.
 
 ## Public and private templates
 

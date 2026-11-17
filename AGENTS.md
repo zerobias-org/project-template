@@ -7,7 +7,8 @@ Instructions for an AI agent that adds or changes a project template in this rep
 
 A template is one `*.yml` file directly in a package folder `package/<vendor>/<name>/`.
 A user creates a project from it in the Projects App.
-The project starts with the template's type, lifecycle, boards, board activities, notebooks, Documents folders and starter tasks.
+The project starts with the template's type, lifecycle, boards, board activities, notebooks, Documents folders, starter files and starter tasks.
+A template can also name an agent skill that operates projects made from it.
 
 ## Add a template
 
@@ -38,9 +39,19 @@ To add a second template to an existing package:
 4. Make each board `key` unique in the file. Make each task's `board` one of those keys.
 5. Write activities as codes, never as ids. Each code must be loaded on the target environment, or the load fails. A private template can also use activity codes that its own org owns.
 6. Make each task's `activity` one of the activities of its board.
-7. Use only the placeholder `${projectName}`. Put quotes around a value that contains it.
-8. Do not put secrets in a template.
-9. Run `unset ZB_SLOT`, then `zbb :<vendor>:<name>:validateContent`. Fix each failure. Do this before each push.
+7. Use only the placeholders `${projectName}` and `${projectId}`. Put quotes around a yml value that contains one.
+8. Do not put secrets in a template or a starter file.
+9. For each entry in `documents.files`, put the file at its `source` path in the package. Set `folder` to `''` or to a name in `documents.folders`. Keep each file UTF-8 text and 64 KiB or less.
+10. If the package has a `files/` folder, make sure `files/**` is in the `files` list of `package.json`.
+11. If the template has `skill`, make sure `skills/<skill.name>/SKILL.md` exists and its front matter `name` is `skill.name`.
+12. Run `unset ZB_SLOT`, then `zbb :<vendor>:<name>:validateContent`. Fix each failure. Do this before each push.
+
+## Starter files and the skill
+
+- Put a starter file in `package/<vendor>/<name>/files/`. List it in `documents.files` with `folder`, `name` and `source`.
+- Write a skill in `skills/<name>/SKILL.md` at the repo root. Never put it in a package folder.
+- The skill operates the project through the ZeroBias API. Name each API call in it. Check each call with the ZeroBias MCP `zerobias_describe`.
+- Give a template with a skill an `OPERATING.md` starter file in the Documents root. It names the template and the skill. It says how to install the skill and how to get ZeroBias MCP or API access. See `package/zerobias/pmo/files/OPERATING.md`.
 
 ## Activity codes
 
