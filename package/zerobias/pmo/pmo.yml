@@ -8,7 +8,7 @@ skill:
   name: pmo-project
   description: Operate a PMO project in ZeroBias — boards, specs, decisions, meetings.
   url: https://github.com/zerobias-org/project-template/tree/main/skills/pmo-project
-  install: /plugin install zb@zerobias-marketplace
+  install: /plugin install project-templates@zerobias-marketplace
 boards:
   - key: specs
     name: Specs & Stories

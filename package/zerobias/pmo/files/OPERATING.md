@@ -54,16 +54,24 @@ In Claude Code:
 
 ```
 /plugin marketplace add zerobias-org/claude-marketplace
+/plugin install project-templates@zerobias-marketplace
+```
+
+The `project-templates` plugin contains the `pmo-project` skill.
+
+The `zb` plugin from the same marketplace gives the ZeroBias MCP server:
+
+```
 /plugin install zb@zerobias-marketplace
 ```
 
-The `zb` plugin also registers the ZeroBias MCP server. Without the plugin, register it yourself:
+Without the `zb` plugin, register the server yourself:
 
 ```bash
 claude mcp add -s user zerobias zb
 ```
 
-If the plugin does not include `pmo-project` yet, copy the skill from
+If you cannot add the marketplace, copy the skill from
 https://github.com/zerobias-org/project-template/tree/main/skills/pmo-project
 into `.claude/skills/pmo-project/SKILL.md` in your working folder.
 
