@@ -4,6 +4,11 @@ description: A project run with the PMO recipe. Four boards, a notebook for stat
 keywords: [pmo, program]
 projectType: coordination_program
 lifecycle: evergreen
+skill:
+  name: pmo-project
+  description: Operate a PMO project in ZeroBias — boards, specs, decisions, meetings.
+  url: https://github.com/zerobias-org/project-template/tree/main/skills/pmo-project
+  install: /plugin install zb@zerobias-marketplace
 boards:
   - key: specs
     name: Specs & Stories
@@ -25,6 +30,10 @@ notes:
     - name: Items
 documents:
   folders: [Specs, Mockups, Reviews, Diagrams, Meetings, Archive]
+  files:
+    - folder: ''
+      name: OPERATING.md
+      source: files/OPERATING.md
 tasks:
   - board: specs
     name: 'Spec: ${projectName}'
