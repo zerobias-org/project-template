@@ -7,14 +7,14 @@ This file is for the AI agent that helps you run this project. Give it this file
 | Project | ${projectName} |
 | Project id | `${projectId}` |
 | Made from template | PMO project (`@zerobias-org/project-template-zerobias-pmo`) |
-| Skill that operates it | `pmo-project` |
+| Skill that operates it | `pmo-project`, in the Documents folder `Skills` as `pmo-project-SKILL.md` |
 
 ## What the project has
 
 - **Boards:** Specs & Stories (the default board), Decisions & Questions, Mockups, Risks & Dependencies.
 - **Activities:** Specs & Stories allows `pmSpec`, `pmStory`, `pmRelease` and `task`. Decisions & Questions allows `pmQuestion`, `pmDecision`, `pmResearch` and `task`. Mockups and Risks & Dependencies allow `task`.
 - **Notes notebooks:** Status updates, Meeting notes, Items.
-- **Documents folders:** Specs, Mockups, Reviews, Diagrams, Meetings, Archive. This file is in the Documents root.
+- **Documents folders:** Specs, Mockups, Reviews, Diagrams, Meetings, Archive, Skills. This file is in the Documents root.
 - **Starter task:** `Spec: ${projectName}` on Specs & Stories. Feature specs are its subtasks.
 
 People can change the boards, notebooks and folders after the project exists. Read the live project before you act. Do not trust this list.
@@ -23,7 +23,7 @@ People can change the boards, notebooks and folders after the project exists. Re
 
 The skill uses the ZeroBias API through the ZeroBias MCP server.
 
-1. Get an API key in ZeroBias: **Settings > API Keys**.
+1. Get an API key in ZeroBias: open your user menu and select **Manage My API Keys**.
 2. Put the key in your shell profile, for example `~/.zshrc`:
 
    ```bash
@@ -46,34 +46,22 @@ The skill uses the ZeroBias API through the ZeroBias MCP server.
    zb status       # check the connection
    ```
 
+5. Register the server with Claude Code:
+
+   ```bash
+   claude mcp add -s user zerobias zb
+   ```
+
 The server runs on Linux, macOS, and Windows through WSL.
 
 ## 2. Install the skill
 
-In Claude Code:
+1. In this project's Documents, open the folder `Skills`.
+2. Download `pmo-project-SKILL.md`.
+3. Save it as `.claude/skills/pmo-project/SKILL.md` in your working folder.
 
-```
-/plugin marketplace add zerobias-org/claude-marketplace
-/plugin install project-templates@zerobias-marketplace
-```
-
-The `project-templates` plugin contains the `pmo-project` skill.
-
-The `zb` plugin from the same marketplace gives the ZeroBias MCP server:
-
-```
-/plugin install zb@zerobias-marketplace
-```
-
-Without the `zb` plugin, register the server yourself:
-
-```bash
-claude mcp add -s user zerobias zb
-```
-
-If you cannot add the marketplace, copy the skill from
-https://github.com/zerobias-org/project-template/tree/main/skills/pmo-project
-into `.claude/skills/pmo-project/SKILL.md` in your working folder.
+The skill is a copy made when the project was created. A newer copy is at
+https://github.com/zerobias-org/project-template/blob/main/package/zerobias/pmo/files/skills/pmo-project/SKILL.md
 
 ## 3. Start
 

@@ -9,7 +9,7 @@ A PMO project is a ZeroBias project made from the PMO project template. Use the 
 
 ## Before you start
 
-1. Make sure the ZeroBias MCP tools are available. If they are not, tell the user to read `OPERATING.md` in the project's Documents root. Then stop.
+1. Make sure the ZeroBias MCP tools are available. If they are not, tell the user to follow `OPERATING.md` in the project's Documents root. It says how to set up the ZeroBias MCP server. Then stop.
 2. Get the project id. `OPERATING.md` contains it. Otherwise call `platform.Project.list` and match the project name.
 3. Read the project: `platform.Project.get` with `projectId`.
 4. Run `zerobias_describe` on an operation before its first use in a session. Parameter names change between versions.
@@ -25,7 +25,7 @@ Read the live project. People change boards, notebooks and folders after the pro
 | Mockups board | `task` | Mockup work |
 | Risks & Dependencies board | `task` | Risks and dependencies |
 | Notes notebooks | Status updates, Meeting notes, Items | Written updates and notes |
-| Documents folders | Specs, Mockups, Reviews, Diagrams, Meetings, Archive | Files |
+| Documents folders | Specs, Mockups, Reviews, Diagrams, Meetings, Archive, Skills | Files. `Skills` holds this skill as `pmo-project-SKILL.md` |
 
 The starter task `Spec: <project name>` is the product spec. Put each feature spec under it as a subtask.
 
