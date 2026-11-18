@@ -1,0 +1,27 @@
+{
+  "name": "@zerobias-org/project-template-zerobias-spec_kit",
+  "version": "1.0.0",
+  "description": "ZeroBias Spec Kit project template artifact",
+  "author": "team@zerobias.com",
+  "license": "ISC",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:zerobias-org/project-template.git",
+    "directory": "package/zerobias/spec_kit"
+  },
+  "publishConfig": {
+    "registry": "https://pkg.zerobias.org"
+  },
+  "files": [
+    "*.yml",
+    "files/**",
+    "npm-shrinkwrap.json"
+  ],
+  "zerobias": {
+    "package": "zerobias.spec_kit.project_template",
+    "dataloader-version": "1.0.0",
+    "import-artifact": "project_template"
+  },
+  "dependencies": {}
+}
