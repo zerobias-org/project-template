@@ -74,6 +74,7 @@ bundle/                              # @zerobias-org/project-template-bundle (wo
 | Package | Template | Source |
 |---|---|---|
 | `zerobias/pmo` | PMO project | the PMO recipe: a `coordination_program`, four boards (Specs & Stories, Decisions & Questions, Mockups, Risks & Dependencies), three notebooks, seven Documents folders, `OPERATING.md` in the Documents root, the `pmo-project` skill in the Skills folder, a starter spec task |
+| `zerobias/spec_kit` | Spec Kit project | [GitHub Spec Kit](https://github.com/github/spec-kit) v1.4.2 (MIT): a `standard` evergreen project, boards Constitution, Specs (default), Plans, Tasks, three notebooks, five Documents folders, the five Spec Kit templates with their MIT license, `OPERATING.md`, the `spec-kit-project` skill, and two starter tasks |
 
 The PMO template uses the Product Management activities. They are on CI and
 QA, and on PROD after the Product Management content deploys there. The load
