@@ -1,0 +1,54 @@
+id: 0a5dbca1-cc86-4684-81a9-856f0574f249
+name: Product release
+description: 'Ship one release of a product: scope, build, test, release notes and launch. A phase project under its product.'
+keywords: [release, product, launch, changelog, phase]
+projectType: phase
+lifecycle: fixed-term
+skill:
+  name: product-release
+  description: Run one product release in ZeroBias — release scope, stories, test results, release notes and launch.
+  url: https://github.com/zerobias-org/project-template/blob/main/package/zerobias/product_release/files/skills/product-release/SKILL.md
+  install: Copy Documents/Skills/product-release-SKILL.md to .claude/skills/product-release/SKILL.md
+boards:
+  - key: release
+    name: Release
+    isDefault: true
+    activities: [pmRelease, pmStory, task]
+  - key: launch
+    name: Launch
+    activities: [task]
+  - key: decisions
+    name: Decisions & Questions
+    activities: [pmQuestion, pmDecision, task]
+notes:
+  notebooks:
+    - name: Release meetings
+    - name: Status updates
+documents:
+  folders: [Release Notes, Test Results, Launch, Archive, Skills]
+  files:
+    - name: OPERATING.md
+      path: files/OPERATING.md
+    - folder: Release Notes
+      name: CHANGELOG.md
+      path: files/CHANGELOG.md
+    - folder: Skills
+      name: product-release-SKILL.md
+      path: files/skills/product-release/SKILL.md
+tasks:
+  - board: release
+    name: 'Release: ${projectName}'
+    activity: pmRelease
+    description: The release. Each story in the release is a pmStory subtask.
+  - board: release
+    name: Freeze the release scope
+    activity: task
+    description: Agree which stories are in the release. Move the rest back to the product.
+  - board: release
+    name: Write the release notes
+    activity: task
+    description: Write Documents/Release Notes/CHANGELOG.md for this release.
+  - board: launch
+    name: Launch review
+    activity: task
+    description: Check the test results, the release notes and the launch plan before the release ships.
