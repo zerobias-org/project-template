@@ -1,14 +1,14 @@
 {
-  "name": "@zerobias-org/project-template-zerobias-pmo",
+  "name": "@zerobias-org/project-template-zerobias-product_management",
   "version": "1.0.0",
-  "description": "ZeroBias PMO project template artifact",
+  "description": "ZeroBias Product Management project template artifact",
   "author": "team@zerobias.com",
   "license": "ISC",
   "type": "module",
   "repository": {
     "type": "git",
     "url": "git@github.com:zerobias-org/project-template.git",
-    "directory": "package/zerobias/pmo"
+    "directory": "package/zerobias/product_management"
   },
   "publishConfig": {
     "registry": "https://pkg.zerobias.org"
@@ -20,7 +20,7 @@
     "npm-shrinkwrap.json"
   ],
   "zerobias": {
-    "package": "zerobias.pmo.project_template",
+    "package": "zerobias.product_management.project_template",
     "dataloader-version": "1.0.0",
     "import-artifact": "project_template",
     "catalog-files": [

@@ -32,7 +32,9 @@ To add a second template to an existing package:
    - `standard`: `fixed-term` or `evergreen`
    - `program`: `evergreen` only
    - `coordination_program`: `evergreen` only
-   - `phase`: `fixed-term` only, and the project needs a `coordination_program` parent
+   - `product`: `evergreen` only
+   - `portfolio`: `evergreen` only
+   - `phase`: `fixed-term` only, and the project needs a `coordination_program` or `product` ancestor
    - `assessment`: `fixed-term` only
    - `engagement`, `rfp`, `pilot`: `fixed-term` or `evergreen`
 3. Give exactly one board `isDefault: true`. The project's default board gets that board's name.
@@ -54,7 +56,7 @@ To add a second template to an existing package:
 - Add `Skills` to `documents.folders`. Add the skill to `documents.files` with folder `Skills`, name `<name>-SKILL.md` and path `files/skills/<name>/SKILL.md`.
 - Set `skill.url` to the `SKILL.md` on `main`. Set `skill.install` to `Copy Documents/Skills/<name>-SKILL.md to .claude/skills/<name>/SKILL.md`.
 - The skill operates the project through the ZeroBias API. Name each API call in it. Check each call with the ZeroBias MCP `zerobias_describe`.
-- Give a template with a skill an `OPERATING.md` starter file in the Documents root. It names the template and the skill. It says how to install the skill and how to get ZeroBias MCP or API access. See `package/zerobias/pmo/files/OPERATING.md`.
+- Give a template with a skill an `OPERATING.md` starter file in the Documents root. It names the template and the skill. It says how to install the skill and how to get ZeroBias MCP or API access. See `package/zerobias/product_management/files/OPERATING.md`.
 
 ## Activity codes
 
@@ -96,7 +98,7 @@ Do not add these. The loader does not read them:
 ## Commits and PRs
 
 - Use Conventional Commits. Scope: `project-template-<vendor>-<name>`.
-- Example: `feat(project-template-zerobias-pmo): add the PMO template`.
+- Example: `feat(project-template-zerobias-product_management): add the Product Management template`.
 - Open each PR as a draft.
 - Put the line `ZeroBias task: <code>` in the PR body.
 - Do not add Claude attribution to commits or PRs.

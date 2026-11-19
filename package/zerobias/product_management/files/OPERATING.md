@@ -6,8 +6,8 @@ This file is for the AI agent that helps you run this project. Give it this file
 |---|---|
 | Project | ${projectName} |
 | Project id | `${projectId}` |
-| Made from template | PMO project (`@zerobias-org/project-template-zerobias-pmo`) |
-| Skill that operates it | `pmo-project`, in the Documents folder `Skills` as `pmo-project-SKILL.md` |
+| Made from template | Product Management project (`@zerobias-org/project-template-zerobias-product_management`) |
+| Skill that operates it | `product-management-project`, in the Documents folder `Skills` as `product-management-project-SKILL.md` |
 
 ## What the project has
 
@@ -16,6 +16,7 @@ This file is for the AI agent that helps you run this project. Give it this file
 - **Notes notebooks:** Status updates, Meeting notes, Items.
 - **Documents folders:** Specs, Mockups, Reviews, Diagrams, Meetings, Archive, Skills. This file is in the Documents root.
 - **Starter task:** `Spec: ${projectName}` on Specs & Stories. Feature specs are its subtasks.
+- **Sub-projects:** other products can sit under this product. A release can be a `phase` project under it.
 
 People can change the boards, notebooks and folders after the project exists. Read the live project before you act. Do not trust this list.
 
@@ -57,11 +58,11 @@ The server runs on Linux, macOS, and Windows through WSL.
 ## 2. Install the skill
 
 1. In this project's Documents, open the folder `Skills`.
-2. Download `pmo-project-SKILL.md`.
-3. Save it as `.claude/skills/pmo-project/SKILL.md` in your working folder.
+2. Download `product-management-project-SKILL.md`.
+3. Save it as `.claude/skills/product-management-project/SKILL.md` in your working folder.
 
 The skill is a copy made when the project was created. A newer copy is at
-https://github.com/zerobias-org/project-template/blob/main/package/zerobias/pmo/files/skills/pmo-project/SKILL.md
+https://github.com/zerobias-org/project-template/blob/main/package/zerobias/product_management/files/skills/product-management-project/SKILL.md
 
 ## 3. Start
 

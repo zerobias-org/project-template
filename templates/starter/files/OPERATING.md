@@ -15,11 +15,11 @@ REPLACE-WITH-BOARDS-NOTEBOOKS-FOLDERS-AND-STARTER-TASKS
 
 ## 1. Give your agent ZeroBias access
 
-Copy this section from `package/zerobias/pmo/files/OPERATING.md`.
+Copy this section from `package/zerobias/product_management/files/OPERATING.md`.
 
 ## 2. Install the skill
 
-Copy this section from `package/zerobias/pmo/files/OPERATING.md`. Change the skill name and the link.
+Copy this section from `package/zerobias/product_management/files/OPERATING.md`. Change the skill name and the link.
 
 ## 3. Start
 
