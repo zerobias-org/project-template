@@ -16,12 +16,17 @@
   "files": [
     "*.yml",
     "files/**",
+    "README.md",
     "npm-shrinkwrap.json"
   ],
   "zerobias": {
     "package": "REPLACE-VENDOR.REPLACE-NAME.project_template",
     "dataloader-version": "1.0.0",
-    "import-artifact": "project_template"
+    "import-artifact": "project_template",
+    "catalog-files": [
+      "files/**"
+    ],
+    "documentation": "README.md"
   },
   "dependencies": {}
 }

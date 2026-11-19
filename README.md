@@ -37,7 +37,8 @@ package/<vendor>/<name>/*.yml
     │  merge to main → the publish workflow releases the npm package
     ▼
 platform data loader           import-artifact: project_template
-    │  writes the template, and one version of it per package version, to the catalog
+    │  writes the template, and one version of it per package version, to the catalog;
+    │  stores the starter files and the README in the shared catalog, and links the README as the version's documentation
     ▼
 Create Project dialog          the user picks the template
     ▼
@@ -56,7 +57,8 @@ package/
         ├── .npmrc                   #   byte-identical copy of the repo-root .npmrc
         ├── build.gradle.kts         #   plugins { id("zb.content") }
         ├── pmo.yml                  #   one template per *.yml file in the package folder
-        └── files/                   #   starter files; pmo.yml names each in documents.files
+        ├── README.md                #   documents the templates (zerobias.documentation)
+        └── files/                   #   starter files (zerobias.catalog-files); pmo.yml names each in documents.files
             ├── OPERATING.md         #     goes to the Documents root
             └── skills/pmo-project/SKILL.md   # the pmo-project skill; goes to Documents/Skills
 templates/starter/                   # the starter package; never published (see "Add a template")
@@ -75,9 +77,11 @@ bundle/                              # @zerobias-org/project-template-bundle (wo
 |---|---|---|
 | `zerobias/pmo` | PMO project | the PMO recipe: a `coordination_program`, four boards (Specs & Stories, Decisions & Questions, Mockups, Risks & Dependencies), three notebooks, seven Documents folders, `OPERATING.md` in the Documents root, the `pmo-project` skill in the Skills folder, a starter spec task |
 
-The PMO template uses the Product Management activities. They are on CI and
-QA, and on PROD after the Product Management content deploys there. The load
-fails on an environment that does not have them.
+The PMO template uses the Product Management activities (`pmSpec`, `pmStory`,
+`pmRelease`, `pmQuestion`, `pmDecision`, `pmResearch`). The platform's workflow
+content (`zerobias.zerobias.platform.workflow`) provides them on every
+environment. A load fails on an environment that lacks an activity a template
+names.
 
 ## Field reference
 
@@ -98,15 +102,16 @@ fails on an environment that does not have them.
 | `notes.notebooks` | no | List of Notes notebooks |
 | `notes.notebooks[].name` | yes | Notebook name |
 | `documents.folders` | no | List of Documents folder names |
-| `documents.files` | no | List of starter files. The project gets each file in its folder |
-| `documents.files[].folder` | yes | `''` for the Documents root, or a name from `documents.folders` |
+| `documents.files` | no | List of starter files. The project gets a copy of each in its folder |
+| `documents.files[].folder` | no | A name from `documents.folders`. Leave it out (or `''`) for the Documents root |
 | `documents.files[].name` | yes | File name in the project. Unique in its folder |
-| `documents.files[].source` | yes | Path of the file in the package, relative to the template yml. UTF-8 text, 64 KiB or less. `${projectName}` and `${projectId}` are allowed in the text |
+| `documents.files[].path` | yes | Path of the file in the package. `zerobias.catalog-files` must match it. In a text file, `${projectName}` and `${projectId}` are filled in; any other `${...}` stays as written |
 | `skill` | no | The agent skill that operates projects made from this template. The Create Project dialog shows it. The platform does not install it |
 | `skill.name` | yes | The `name` in the skill's `SKILL.md` front matter |
-| `skill.description` | yes | One line: what the skill does |
-| `skill.url` | yes | Link to the skill's `SKILL.md` in this repo on `main` |
-| `skill.install` | yes | One line that tells the user how to install the skill from the project |
+| `skill.description` | no | One line: what the skill does |
+| `skill.url` | no | Link to the skill's `SKILL.md` in this repo on `main` |
+| `skill.install` | no | One line that tells the user how to install the skill from the project |
+| `documentation` | no | Path of the file that documents this template, relative to the yml. It takes the place of the package's `zerobias.documentation` |
 | `tasks` | no | List of starter tasks |
 | `tasks[].board` | yes | The `key` of the task's board |
 | `tasks[].name` | yes | Task name. `${projectName}` and `${projectId}` are allowed |
@@ -136,17 +141,19 @@ From `zerobias-com/platform` `api/src/api/schemas/project/newProject.yml`:
 6. Each task's `activity` is one of the activities of its board.
 7. The only placeholders are `${projectName}` and `${projectId}`. Quote a yml value that contains one.
 8. No secrets in a template or a starter file.
-9. Each `documents.files[].source` exists in the package, and each `folder` is `''` or in `documents.folders`. No two files share a folder and name.
+9. Each `documents.files[].path` is a file in the package that `zerobias.catalog-files` matches, and each `folder` is left out or in `documents.folders`. No two files share a folder and name.
 10. Run `zbb validateContent` before each push.
 
 ## Starter files and the skill
 
-A template can create text files in the new project's Documents folders. Put
-each file under `files/` in the package, and list it in `documents.files`. The
-package's `files` list in `package.json` must include `files/**`, or the file
-is not published. The loader stores the file text with the template version.
-At create, the platform fills in `${projectName}` and `${projectId}` and
-uploads the file.
+A template can create files in the new project's Documents folders. Put each
+file under `files/` in the package, and list it in `documents.files`. In
+`package.json`, `files` must include `files/**`, or the file is not published,
+and `zerobias.catalog-files` must include `files/**`, or the loader refuses the
+template. The loader stores each file in the shared catalog; the template
+version keeps only its path. At create, the platform copies the file into the
+project, filling in `${projectName}` and `${projectId}` in a text file. Any file
+type works; only text files get the placeholders filled in.
 
 A template can name an agent skill in `skill`. The skill lets the customer's
 AI agent operate a project made from the template through the ZeroBias API.
@@ -160,10 +167,22 @@ Give each template with a skill a starter file such as `OPERATING.md` that
 names the template and the skill, and says how to install the skill and how to
 get ZeroBias MCP or API access.
 
+## Documentation
+
+Each package has a `README.md` that documents its templates, and
+`"documentation": "README.md"` in the `zerobias` section of `package.json`.
+The loader stores the README in the shared catalog and links each template
+version it writes to it (`documented_by`), as pipeline templates are
+documented. The catalog serves it as the version's `documentation`, and the UI
+opens it from the template. A template can name its own file with
+`documentation:` in its yml.
+
 ## Public and private templates
 
 No `orgId` in `package.json` means the templates are public. With `orgId`, they
-are private to that org.
+are private to that org. A private package keeps its files out of the shared
+catalog, so its projects get no starter files and its versions no
+documentation.
 
 ## Versions and changes
 
