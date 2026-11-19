@@ -31,33 +31,32 @@ notes:
 documents:
   folders: [Constitution, Specs, Templates, Archive, Skills]
   files:
-    - folder: ''
-      name: OPERATING.md
-      source: files/OPERATING.md
+    - name: OPERATING.md
+      path: files/OPERATING.md
     - folder: Constitution
       name: constitution.md
-      source: files/templates/constitution-template.md
+      path: files/templates/constitution-template.md
     - folder: Templates
       name: spec-template.md
-      source: files/templates/spec-template.md
+      path: files/templates/spec-template.md
     - folder: Templates
       name: plan-template.md
-      source: files/templates/plan-template.md
+      path: files/templates/plan-template.md
     - folder: Templates
       name: tasks-template.md
-      source: files/templates/tasks-template.md
+      path: files/templates/tasks-template.md
     - folder: Templates
       name: checklist-template.md
-      source: files/templates/checklist-template.md
+      path: files/templates/checklist-template.md
     - folder: Templates
       name: constitution-template.md
-      source: files/templates/constitution-template.md
+      path: files/templates/constitution-template.md
     - folder: Templates
       name: LICENSE-spec-kit.txt
-      source: files/templates/LICENSE-spec-kit.txt
+      path: files/templates/LICENSE-spec-kit.txt
     - folder: Skills
       name: spec-kit-project-SKILL.md
-      source: files/skills/spec-kit-project/SKILL.md
+      path: files/skills/spec-kit-project/SKILL.md
 tasks:
   - board: constitution
     name: 'Constitution: ${projectName}'
