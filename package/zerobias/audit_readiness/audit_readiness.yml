@@ -1,6 +1,6 @@
 id: f1414d45-4737-45cd-b692-3a80f3ae2850
 name: Compliance audit readiness project
-description: Prepare for an external audit against one framework, such as SOC 2 or ISO 27001: scope, gap analysis, remediation, evidence and auditor requests, up to the auditor fieldwork.
+description: 'Prepare for an external audit against one framework, such as SOC 2 or ISO 27001: scope, gap analysis, remediation, evidence and auditor requests, up to the auditor fieldwork.'
 keywords: [audit, compliance, soc2, iso27001, readiness, assessment]
 projectType: assessment
 lifecycle: fixed-term
