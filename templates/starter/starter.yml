@@ -24,7 +24,7 @@ boards:                                  # required. At least one board
     activities: [task]                   # required. Activity codes the board allows. Codes, never ids
   - key: decisions
     name: Decisions & Questions
-    activities: [pmQuestion, pmDecision, task]   # pm* codes: CI and QA now, PROD after Product Management deploys
+    activities: [pmQuestion, pmDecision, task]   # pm* codes: the Product Management activities, on every environment
 
 notes:                                   # optional
   notebooks:                             # Notes notebooks. Names only in v1
@@ -33,13 +33,12 @@ notes:                                   # optional
 
 documents:                               # optional
   folders: [Specs, Reviews, Archive]     # Documents folder names
-  files:                                 # starter files the project gets
-    - folder: ''                         # '' = the Documents root, or a name from folders
-      name: OPERATING.md                 # file name in the project
-      source: files/OPERATING.md         # path in this package. UTF-8 text, 64 KiB or less
-#   - folder: Skills                     # with skill: add Skills to folders, put the skill here
+  files:                                 # starter files the project gets, copied from the catalog
+    - name: OPERATING.md                 # file name in the project. No folder: the Documents root
+      path: files/OPERATING.md           # path in this package; zerobias.catalog-files in package.json must match it
+#   - folder: Skills                     # a name from folders. With skill: add Skills to folders, put the skill here
 #     name: REPLACE-SKILL-NAME-SKILL.md
-#     source: files/skills/REPLACE-SKILL-NAME/SKILL.md
+#     path: files/skills/REPLACE-SKILL-NAME/SKILL.md
 
 tasks:                                   # optional. Starter tasks
   - board: main                          # required. A board key from above

@@ -31,12 +31,11 @@ notes:
 documents:
   folders: [Specs, Mockups, Reviews, Diagrams, Meetings, Archive, Skills]
   files:
-    - folder: ''
-      name: OPERATING.md
-      source: files/OPERATING.md
+    - name: OPERATING.md
+      path: files/OPERATING.md
     - folder: Skills
       name: pmo-project-SKILL.md
-      source: files/skills/pmo-project/SKILL.md
+      path: files/skills/pmo-project/SKILL.md
 tasks:
   - board: specs
     name: 'Spec: ${projectName}'
