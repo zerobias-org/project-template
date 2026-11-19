@@ -77,6 +77,7 @@ bundle/                              # @zerobias-org/project-template-bundle (wo
 |---|---|---|
 | `zerobias/product_management` | Product Management project | the product management recipe: a `product`, four boards (Specs & Stories, Decisions & Questions, Mockups, Risks & Dependencies), three notebooks, seven Documents folders, `OPERATING.md` in the Documents root, the `product-management-project` skill in the Skills folder, a starter spec task |
 | `zerobias/spec_kit` | Spec Kit project | [GitHub Spec Kit](https://github.com/github/spec-kit) v1.4.2 (MIT): a `standard` evergreen project, boards Constitution, Specs (default), Plans, Tasks, three notebooks, five Documents folders, the five Spec Kit templates with their MIT license, `OPERATING.md`, the `spec-kit-project` skill, and two starter tasks |
+| `zerobias/audit_readiness` | Compliance audit readiness project | an `assessment` (fixed-term) that prepares for one external audit, such as SOC 2 or ISO 27001: boards Gaps & Remediation (default), Evidence, Auditor Requests, Decisions & Questions, three notebooks, seven Documents folders, a scope file and an audit calendar, `OPERATING.md`, the `audit-readiness` skill, and four starter tasks. No framework text is copied |
 
 The Product Management template uses the Product Management activities (`pmSpec`, `pmStory`,
 `pmRelease`, `pmQuestion`, `pmDecision`, `pmResearch`). The platform's workflow

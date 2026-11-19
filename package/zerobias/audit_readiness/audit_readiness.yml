@@ -1,0 +1,61 @@
+id: f1414d45-4737-45cd-b692-3a80f3ae2850
+name: Compliance audit readiness project
+description: Prepare for an external audit against one framework, such as SOC 2 or ISO 27001: scope, gap analysis, remediation, evidence and auditor requests, up to the auditor fieldwork.
+keywords: [audit, compliance, soc2, iso27001, readiness, assessment]
+projectType: assessment
+lifecycle: fixed-term
+skill:
+  name: audit-readiness
+  description: Run audit readiness in ZeroBias — scope, gaps, remediation, evidence and auditor requests for one framework.
+  url: https://github.com/zerobias-org/project-template/blob/main/package/zerobias/audit_readiness/files/skills/audit-readiness/SKILL.md
+  install: Copy Documents/Skills/audit-readiness-SKILL.md to .claude/skills/audit-readiness/SKILL.md
+boards:
+  - key: gaps
+    name: Gaps & Remediation
+    isDefault: true
+    activities: [task]
+  - key: evidence
+    name: Evidence
+    activities: [task]
+  - key: requests
+    name: Auditor Requests
+    activities: [task]
+  - key: decisions
+    name: Decisions & Questions
+    activities: [pmQuestion, pmDecision, task]
+notes:
+  notebooks:
+    - name: Status updates
+    - name: Auditor meetings
+    - name: Walkthrough notes
+documents:
+  folders: [Scope, Policies, Evidence, Auditor Requests, Reports, Archive, Skills]
+  files:
+    - name: OPERATING.md
+      path: files/OPERATING.md
+    - folder: Scope
+      name: scope.md
+      path: files/scope.md
+    - folder: Scope
+      name: audit-calendar.md
+      path: files/audit-calendar.md
+    - folder: Skills
+      name: audit-readiness-SKILL.md
+      path: files/skills/audit-readiness/SKILL.md
+tasks:
+  - board: decisions
+    name: Confirm the audit scope and period
+    activity: pmDecision
+    description: Decide the framework, the systems in scope and the audit period. Record them in Documents/Scope/scope.md.
+  - board: decisions
+    name: Choose the audit firm
+    activity: pmDecision
+    description: Choose the audit firm and agree the fieldwork dates. Record them in Documents/Scope/audit-calendar.md.
+  - board: gaps
+    name: 'Gap analysis: ${projectName}'
+    activity: task
+    description: Compare the current controls with the framework. Create one remediation subtask for each gap.
+  - board: requests
+    name: Schedule the auditor kickoff
+    activity: task
+    description: Agree the kickoff date with the audit firm. Put the date in Documents/Scope/audit-calendar.md.
