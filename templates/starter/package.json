@@ -1,0 +1,32 @@
+{
+  "name": "@zerobias-org/project-template-REPLACE-VENDOR-REPLACE-NAME",
+  "version": "1.0.0",
+  "description": "REPLACE-NAME project template artifact",
+  "author": "team@zerobias.com",
+  "license": "ISC",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:zerobias-org/project-template.git",
+    "directory": "package/REPLACE-VENDOR/REPLACE-NAME"
+  },
+  "publishConfig": {
+    "registry": "https://pkg.zerobias.org"
+  },
+  "files": [
+    "*.yml",
+    "files/**",
+    "README.md",
+    "npm-shrinkwrap.json"
+  ],
+  "zerobias": {
+    "package": "REPLACE-VENDOR.REPLACE-NAME.project_template",
+    "dataloader-version": "1.0.0",
+    "import-artifact": "project_template",
+    "catalog-files": [
+      "files/**"
+    ],
+    "documentation": "README.md"
+  },
+  "dependencies": {}
+}

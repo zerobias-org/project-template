@@ -1,0 +1,43 @@
+id: 7d10f7c5-4a23-4174-9a2c-0787ae312474
+name: Product Management project
+description: A product project run with the product management recipe. Four boards, a notebook for status updates, meeting notes and work items, and Documents folders.
+keywords: [product, product-management]
+projectType: product
+lifecycle: evergreen
+skill:
+  name: product-management-project
+  description: Operate a Product Management project in ZeroBias — boards, specs, decisions, meetings.
+  url: https://github.com/zerobias-org/project-template/blob/main/package/zerobias/product_management/files/skills/product-management-project/SKILL.md
+  install: Copy Documents/Skills/product-management-project-SKILL.md to .claude/skills/product-management-project/SKILL.md
+boards:
+  - key: specs
+    name: Specs & Stories
+    isDefault: true
+    activities: [pmSpec, pmStory, pmRelease, task]
+  - key: decisions
+    name: Decisions & Questions
+    activities: [pmQuestion, pmDecision, pmResearch, task]
+  - key: mockups
+    name: Mockups
+    activities: [task]
+  - key: risks
+    name: Risks & Dependencies
+    activities: [task]
+notes:
+  notebooks:
+    - name: Status updates
+    - name: Meeting notes
+    - name: Items
+documents:
+  folders: [Specs, Mockups, Reviews, Diagrams, Meetings, Archive, Skills]
+  files:
+    - name: OPERATING.md
+      path: files/OPERATING.md
+    - folder: Skills
+      name: product-management-project-SKILL.md
+      path: files/skills/product-management-project/SKILL.md
+tasks:
+  - board: specs
+    name: 'Spec: ${projectName}'
+    activity: pmSpec
+    description: The product spec. Feature specs are subtasks.
