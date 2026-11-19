@@ -41,7 +41,7 @@ rootProject.name = "project-templates"
 
 // Auto-discover template packages under package/. The marker walk picks
 // up build.gradle.kts at any depth. Project paths mirror the filesystem:
-// package/zerobias/pmo → :zerobias:pmo.
+// package/zerobias/product_management → :zerobias:product_management.
 val packageDir = file("package")
 if (packageDir.exists()) {
     packageDir.walkTopDown()

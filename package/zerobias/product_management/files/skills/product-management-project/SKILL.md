@@ -1,11 +1,11 @@
 ---
-name: pmo-project
-description: Operate a ZeroBias project made from the PMO project template — specs and stories, decisions and questions, mockups, risks, meeting notes, status updates and Documents folders. Use when the user asks to read, add or update work in a PMO project in ZeroBias.
+name: product-management-project
+description: Operate a ZeroBias project made from the Product Management project template — specs and stories, decisions and questions, mockups, risks, meeting notes, status updates and Documents folders. Use when the user asks to read, add or update work in a Product Management project in ZeroBias.
 ---
 
-# Operate a PMO project in ZeroBias
+# Operate a Product Management project in ZeroBias
 
-A PMO project is a ZeroBias project made from the PMO project template. Use the ZeroBias MCP tools for every step: `zerobias_search`, `zerobias_describe` and `zerobias_execute`.
+A Product Management project is a ZeroBias project made from the Product Management project template. Use the ZeroBias MCP tools for every step: `zerobias_search`, `zerobias_describe` and `zerobias_execute`.
 
 ## Before you start
 
@@ -14,7 +14,7 @@ A PMO project is a ZeroBias project made from the PMO project template. Use the 
 3. Read the project: `platform.Project.get` with `projectId`.
 4. Run `zerobias_describe` on an operation before its first use in a session. Parameter names change between versions.
 
-## What a PMO project contains
+## What a Product Management project contains
 
 Read the live project. People change boards, notebooks and folders after the project is created.
 
@@ -25,9 +25,11 @@ Read the live project. People change boards, notebooks and folders after the pro
 | Mockups board | `task` | Mockup work |
 | Risks & Dependencies board | `task` | Risks and dependencies |
 | Notes notebooks | Status updates, Meeting notes, Items | Written updates and notes |
-| Documents folders | Specs, Mockups, Reviews, Diagrams, Meetings, Archive, Skills | Files. `Skills` holds this skill as `pmo-project-SKILL.md` |
+| Documents folders | Specs, Mockups, Reviews, Diagrams, Meetings, Archive, Skills | Files. `Skills` holds this skill as `product-management-project-SKILL.md` |
 
 The starter task `Spec: <project name>` is the product spec. Put each feature spec under it as a subtask.
+
+A release can also be its own `phase` project under this product, with a fixed term. Other products can sit under this product as sub-projects.
 
 ## Boards and tasks
 

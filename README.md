@@ -50,17 +50,17 @@ new project                    linked is_instance_of → the template version
 ```
 package/
 └── zerobias/
-    └── pmo/                         # one package per template group: package/<vendor>/<name>/
-        ├── package.json             #   @zerobias-org/project-template-zerobias-pmo
-        │                            #   zerobias.package = zerobias.pmo.project_template
+    └── product_management/          # one package per template group: package/<vendor>/<name>/
+        ├── package.json             #   @zerobias-org/project-template-zerobias-product_management
+        │                            #   zerobias.package = zerobias.product_management.project_template
         │                            #   zerobias.import-artifact = project_template
         ├── .npmrc                   #   byte-identical copy of the repo-root .npmrc
         ├── build.gradle.kts         #   plugins { id("zb.content") }
-        ├── pmo.yml                  #   one template per *.yml file in the package folder
+        ├── product_management.yml   #   one template per *.yml file in the package folder
         ├── README.md                #   documents the templates (zerobias.documentation)
-        └── files/                   #   starter files (zerobias.catalog-files); pmo.yml names each in documents.files
+        └── files/                   #   starter files (zerobias.catalog-files); product_management.yml names each in documents.files
             ├── OPERATING.md         #     goes to the Documents root
-            └── skills/pmo-project/SKILL.md   # the pmo-project skill; goes to Documents/Skills
+            └── skills/product-management-project/SKILL.md   # the product-management-project skill; goes to Documents/Skills
 templates/starter/                   # the starter package; never published (see "Add a template")
 scripts/new-template.sh              # copies the starter into package/<vendor>/<name>/
 bundle/                              # @zerobias-org/project-template-bundle (workflow-managed)
@@ -75,10 +75,10 @@ bundle/                              # @zerobias-org/project-template-bundle (wo
 
 | Package | Template | Source |
 |---|---|---|
-| `zerobias/pmo` | PMO project | the PMO recipe: a `coordination_program`, four boards (Specs & Stories, Decisions & Questions, Mockups, Risks & Dependencies), three notebooks, seven Documents folders, `OPERATING.md` in the Documents root, the `pmo-project` skill in the Skills folder, a starter spec task |
+| `zerobias/product_management` | Product Management project | the product management recipe: a `product`, four boards (Specs & Stories, Decisions & Questions, Mockups, Risks & Dependencies), three notebooks, seven Documents folders, `OPERATING.md` in the Documents root, the `product-management-project` skill in the Skills folder, a starter spec task |
 | `zerobias/spec_kit` | Spec Kit project | [GitHub Spec Kit](https://github.com/github/spec-kit) v1.4.2 (MIT): a `standard` evergreen project, boards Constitution, Specs (default), Plans, Tasks, three notebooks, five Documents folders, the five Spec Kit templates with their MIT license, `OPERATING.md`, the `spec-kit-project` skill, and two starter tasks |
 
-The PMO template uses the Product Management activities (`pmSpec`, `pmStory`,
+The Product Management template uses the Product Management activities (`pmSpec`, `pmStory`,
 `pmRelease`, `pmQuestion`, `pmDecision`, `pmResearch`). The platform's workflow
 content (`zerobias.zerobias.platform.workflow`) provides them on every
 environment. A load fails on an environment that lacks an activity a template
@@ -128,7 +128,9 @@ From `zerobias-com/platform` `api/src/api/schemas/project/newProject.yml`:
 | `standard` | yes | yes | |
 | `program` | no | yes | |
 | `coordination_program` | no | yes | |
-| `phase` | yes | no | needs a `coordination_program` parent |
+| `product` | no | yes | can have a `product` parent |
+| `portfolio` | no | yes | |
+| `phase` | yes | no | needs a `coordination_program` or `product` ancestor |
 | `assessment` | yes | no | |
 | `engagement`, `rfp`, `pilot` | yes | yes | |
 
@@ -226,7 +228,7 @@ Gradle 8.10.2 fails on Java 25.
 npm i -g @zerobias-org/zbb@latest @zerobias-com/platform-dataloader@latest
 
 unset ZB_SLOT                            # a content repo has no slot or stack
-zbb :<vendor>:<name>:validateContent     # file shape only, e.g. :zerobias:pmo:validateContent
+zbb :<vendor>:<name>:validateContent     # file shape only, e.g. :zerobias:product_management:validateContent
 zbb :<vendor>:<name>:gate                # full gate (writes gate-stamp.json)
 zbb validateUniqueIds                    # no two templates share an id
 ```

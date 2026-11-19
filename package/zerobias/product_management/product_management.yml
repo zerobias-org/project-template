@@ -1,14 +1,14 @@
 id: 7d10f7c5-4a23-4174-9a2c-0787ae312474
-name: PMO project
-description: A project run with the PMO recipe. Four boards, a notebook for status updates, meeting notes and work items, and Documents folders.
-keywords: [pmo, program]
-projectType: coordination_program
+name: Product Management project
+description: A product project run with the product management recipe. Four boards, a notebook for status updates, meeting notes and work items, and Documents folders.
+keywords: [product, product-management]
+projectType: product
 lifecycle: evergreen
 skill:
-  name: pmo-project
-  description: Operate a PMO project in ZeroBias — boards, specs, decisions, meetings.
-  url: https://github.com/zerobias-org/project-template/blob/main/package/zerobias/pmo/files/skills/pmo-project/SKILL.md
-  install: Copy Documents/Skills/pmo-project-SKILL.md to .claude/skills/pmo-project/SKILL.md
+  name: product-management-project
+  description: Operate a Product Management project in ZeroBias — boards, specs, decisions, meetings.
+  url: https://github.com/zerobias-org/project-template/blob/main/package/zerobias/product_management/files/skills/product-management-project/SKILL.md
+  install: Copy Documents/Skills/product-management-project-SKILL.md to .claude/skills/product-management-project/SKILL.md
 boards:
   - key: specs
     name: Specs & Stories
@@ -34,8 +34,8 @@ documents:
     - name: OPERATING.md
       path: files/OPERATING.md
     - folder: Skills
-      name: pmo-project-SKILL.md
-      path: files/skills/pmo-project/SKILL.md
+      name: product-management-project-SKILL.md
+      path: files/skills/product-management-project/SKILL.md
 tasks:
   - board: specs
     name: 'Spec: ${projectName}'
