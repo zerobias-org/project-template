@@ -77,6 +77,7 @@ bundle/                              # @zerobias-org/project-template-bundle (wo
 |---|---|---|
 | `zerobias/product_management` | Product Management project | the product management recipe: a `product`, four boards (Specs & Stories, Decisions & Questions, Mockups, Risks & Dependencies), three notebooks, seven Documents folders, `OPERATING.md` in the Documents root, the `product-management-project` skill in the Skills folder, a starter spec task |
 | `zerobias/spec_kit` | Spec Kit project | [GitHub Spec Kit](https://github.com/github/spec-kit) v1.4.2 (MIT): a `standard` evergreen project, boards Constitution, Specs (default), Plans, Tasks, three notebooks, five Documents folders, the five Spec Kit templates with their MIT license, `OPERATING.md`, the `spec-kit-project` skill, and two starter tasks |
+| `zerobias/openspec` | OpenSpec project | [OpenSpec](https://github.com/Fission-AI/OpenSpec) v2.1.1 (MIT): a `standard` evergreen project with one living spec changed by proposals, boards Changes (default) and Tasks, two notebooks, five Documents folders, the four OpenSpec templates with their MIT license, `OPERATING.md`, the `openspec-project` skill (it also does the archive merge), and two starter tasks |
 
 The Product Management template uses the Product Management activities (`pmSpec`, `pmStory`,
 `pmRelease`, `pmQuestion`, `pmDecision`, `pmResearch`). The platform's workflow
