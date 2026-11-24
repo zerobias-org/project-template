@@ -21,10 +21,8 @@ which never change).
 ## Status
 
 **In development** (ZeroBias task: backendFeat-187, "Project templates: choose a
-template when a project is created"). Templates load only after the hydra and
-platform releases for this feature are on an environment. Until then the gate
-stops at the data loader with
-`No catalog.artifact_type found for import-artifact: project_template`.
+template when a project is created"). The hydra and platform releases for this
+feature are on prod, and the gate passes against prod.
 
 The feature spans four repos that merge in order: hydra, platform, this repo,
 then the UI. See the merge order in
