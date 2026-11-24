@@ -1,0 +1,68 @@
+id: 37843720-39ba-45a4-b56f-7a28a5eee853
+name: Spec Kit project
+description: Spec-driven development with GitHub Spec Kit. One constitution for the project, then a spec, a plan and tasks for each feature.
+keywords: [spec-kit, spec-driven, sdd, specification, ai-agent]
+projectType: standard
+lifecycle: evergreen
+skill:
+  name: spec-kit-project
+  description: Run GitHub Spec Kit in a ZeroBias project — constitution, specs, plans, tasks and convergence.
+  url: https://github.com/zerobias-org/project-template/blob/main/package/zerobias/spec_kit/files/skills/spec-kit-project/SKILL.md
+  install: Copy Documents/Skills/spec-kit-project-SKILL.md to .claude/skills/spec-kit-project/SKILL.md
+boards:
+  - key: constitution
+    name: Constitution
+    activities: [pmDecision, pmQuestion, task]
+  - key: specs
+    name: Specs
+    isDefault: true
+    activities: [pmSpec, pmStory, pmQuestion, pmDecision]
+  - key: plans
+    name: Plans
+    activities: [pmResearch, pmDecision, pmQuestion, task]
+  - key: tasks
+    name: Tasks
+    activities: [task, pmRelease]
+notes:
+  notebooks:
+    - name: Clarifications
+    - name: Meeting notes
+    - name: Status updates
+documents:
+  folders: [Constitution, Specs, Templates, Archive, Skills]
+  files:
+    - name: OPERATING.md
+      path: files/OPERATING.md
+    - folder: Constitution
+      name: constitution.md
+      path: files/templates/constitution-template.md
+    - folder: Templates
+      name: spec-template.md
+      path: files/templates/spec-template.md
+    - folder: Templates
+      name: plan-template.md
+      path: files/templates/plan-template.md
+    - folder: Templates
+      name: tasks-template.md
+      path: files/templates/tasks-template.md
+    - folder: Templates
+      name: checklist-template.md
+      path: files/templates/checklist-template.md
+    - folder: Templates
+      name: constitution-template.md
+      path: files/templates/constitution-template.md
+    - folder: Templates
+      name: LICENSE-spec-kit.txt
+      path: files/templates/LICENSE-spec-kit.txt
+    - folder: Skills
+      name: spec-kit-project-SKILL.md
+      path: files/skills/spec-kit-project/SKILL.md
+tasks:
+  - board: constitution
+    name: 'Constitution: ${projectName}'
+    activity: task
+    description: Write the project constitution in Documents/Constitution/constitution.md. Replace every [PLACEHOLDER] with the project's principles and governance.
+  - board: specs
+    name: 'Spec: first feature'
+    activity: pmSpec
+    description: Specify the first feature. Make Documents/Specs/001-<feature>/spec.md from Templates/spec-template.md. Describe what and why, not how.
