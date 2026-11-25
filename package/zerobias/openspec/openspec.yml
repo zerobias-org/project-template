@@ -1,0 +1,55 @@
+id: b69ad1c0-8560-4559-8d1e-4239ae426c49
+name: OpenSpec project
+description: 'Spec-driven development with OpenSpec. One living spec of the system, changed by proposals: propose, apply, archive.'
+keywords: [openspec, spec-driven, specification, change-proposal, ai-agent]
+projectType: standard
+lifecycle: evergreen
+skill:
+  name: openspec-project
+  description: Run OpenSpec in ZeroBias — living specs, change proposals, delta specs, tasks and archive.
+  url: https://github.com/zerobias-org/project-template/blob/main/package/zerobias/openspec/files/skills/openspec-project/SKILL.md
+  install: Copy Documents/Skills/openspec-project-SKILL.md to .claude/skills/openspec-project/SKILL.md
+boards:
+  - key: changes
+    name: Changes
+    isDefault: true
+    activities: [pmSpec, pmQuestion, pmDecision, pmResearch]
+  - key: tasks
+    name: Tasks
+    activities: [task, pmRelease]
+notes:
+  notebooks:
+    - name: Meeting notes
+    - name: Status updates
+documents:
+  folders: [Specs, Changes, Archive, Templates, Skills]
+  files:
+    - name: OPERATING.md
+      path: files/OPERATING.md
+    - folder: Templates
+      name: proposal-template.md
+      path: files/templates/proposal.md
+    - folder: Templates
+      name: spec-template.md
+      path: files/templates/spec.md
+    - folder: Templates
+      name: design-template.md
+      path: files/templates/design.md
+    - folder: Templates
+      name: tasks-template.md
+      path: files/templates/tasks.md
+    - folder: Templates
+      name: LICENSE-openspec.txt
+      path: files/templates/LICENSE-openspec.txt
+    - folder: Skills
+      name: openspec-project-SKILL.md
+      path: files/skills/openspec-project/SKILL.md
+tasks:
+  - board: changes
+    name: 'Baseline spec: ${projectName}'
+    activity: pmSpec
+    description: Write the spec of the system as it is today. Make one Documents/Specs/<capability>/spec.md for each capability.
+  - board: changes
+    name: Propose the first change
+    activity: pmSpec
+    description: Make Documents/Changes/<change-name>/proposal.md from Templates/proposal-template.md. Then write its delta specs and tasks.
