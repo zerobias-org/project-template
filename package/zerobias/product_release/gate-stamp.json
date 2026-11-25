@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0-uat.0",
+  "branch": "feat/product-release-template",
+  "sourceHash": "5857af6733dd26f7271ed95a4264a8d5adf9fbf3b639b03116497fb4e2352174",
+  "testHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "tasks": {
+    "validate": "passed",
+    "lint": "passed",
+    "compile": "passed",
+    "test": "passed",
+    "testDirect": "passed",
+    "testDocker": "passed",
+    "testDataloader": "passed",
+    "buildArtifacts": "passed",
+    "dataloaderExec": "passed"
+  },
+  "tests": {
+      "unit": { "expected": 0, "ran": 0, "status": "skipped" },
+      "integration": { "expected": 0, "ran": 0, "status": "skipped" },
+      "e2e": { "expected": 0, "ran": 0, "status": "skipped" }
+  }
+}
