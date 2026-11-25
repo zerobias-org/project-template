@@ -1,0 +1,53 @@
+id: 77cc377b-5939-41ff-a138-fac20421b287
+name: Requirements program
+description: A program that defines the requirements for one area and measures projects against them. Requirements, decisions and conformance each on a board.
+keywords: [program, requirements, conformance, governance]
+projectType: program
+lifecycle: evergreen
+skill:
+  name: requirements-program
+  description: Run a requirements program in ZeroBias — write requirements, decide exceptions, measure projects against them.
+  url: https://github.com/zerobias-org/project-template/blob/main/package/zerobias/requirements_program/files/skills/requirements-program/SKILL.md
+  install: Copy Documents/Skills/requirements-program-SKILL.md to .claude/skills/requirements-program/SKILL.md
+boards:
+  - key: requirements
+    name: Requirements
+    isDefault: true
+    activities: [pmSpec, pmQuestion, task]
+  - key: decisions
+    name: Decisions & Questions
+    activities: [pmQuestion, pmDecision, pmResearch, task]
+  - key: conformance
+    name: Conformance
+    activities: [task, pmQuestion]
+notes:
+  notebooks:
+    - name: Program meetings
+    - name: Status updates
+documents:
+  folders: [Requirements, Guidance, Conformance Reports, Exceptions, Archive, Skills]
+  files:
+    - name: OPERATING.md
+      path: files/OPERATING.md
+    - folder: Requirements
+      name: requirements.md
+      path: files/requirements.md
+    - folder: Conformance Reports
+      name: conformance-report-template.md
+      path: files/conformance-report-template.md
+    - folder: Skills
+      name: requirements-program-SKILL.md
+      path: files/skills/requirements-program/SKILL.md
+tasks:
+  - board: decisions
+    name: 'Charter: ${projectName}'
+    activity: pmDecision
+    description: Decide the area this program covers, who owns its requirements, and which projects it measures. Record the charter in Documents/Requirements/requirements.md.
+  - board: requirements
+    name: 'Requirements baseline: ${projectName}'
+    activity: pmSpec
+    description: Write the first set of requirements in Documents/Requirements/requirements.md. Each requirement is a pmSpec subtask of this task.
+  - board: conformance
+    name: Choose the first projects to measure
+    activity: task
+    description: List the projects that this program measures first. Create one conformance task for each project.
