@@ -30,4 +30,4 @@ copy `Documents/Skills/product-release-SKILL.md` to `.claude/skills/product-rele
 The boards use the activities `pmDecision`, `pmQuestion`, `pmRelease`, `pmStory`, `task`. The Product Management activities and `task`
 are on every environment.
 
-A `phase` project needs a parent: create it under a `product` or a `coordination_program` project.
+A `phase` project needs a parent: create it under a `product_management` or a `coordination_program` project.
