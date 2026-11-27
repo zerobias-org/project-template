@@ -3,7 +3,7 @@
 A project template for running a product: specs and stories, decisions and open questions, mockups,
 and risks and dependencies, each on its own board, with notebooks for status updates and meeting notes.
 
-A project made from it is a `product` with an `evergreen` lifecycle: it keeps running. Other products can sit
+A project made from it is a `product_management` project with an `evergreen` lifecycle: it keeps running. Other products can sit
 under it, and a release can be a `phase` project under it.
 
 ## What the project starts with

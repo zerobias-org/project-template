@@ -2,7 +2,7 @@ id: 7d10f7c5-4a23-4174-9a2c-0787ae312474
 name: Product Management project
 description: A product project run with the product management recipe. Four boards, a notebook for status updates, meeting notes and work items, and Documents folders.
 keywords: [product, product-management]
-projectType: product
+projectType: product_management
 lifecycle: evergreen
 skill:
   name: product-management-project

@@ -8,7 +8,7 @@ description: REPLACE-WITH-DESCRIPTION    # required. What a project made from th
 # imageUrl: https://...                  # optional. Image for the template. Delete the # and set a real URL; left out, the default icon is used
 keywords: [example, starter]             # optional. Search terms
 
-projectType: REPLACE-WITH-PROJECT-TYPE   # required. standard | program | coordination_program | product | portfolio | phase | assessment | engagement | rfp | pilot
+projectType: REPLACE-WITH-PROJECT-TYPE   # required. standard | program | coordination_program | product_management | portfolio | phase | assessment | engagement | rfp | pilot
 lifecycle: REPLACE-WITH-LIFECYCLE        # required. fixed-term | evergreen. Must be a valid pair with projectType (README.md)
 
 # skill:                                 # optional. The agent skill that operates projects made from this template

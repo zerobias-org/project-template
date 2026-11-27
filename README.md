@@ -73,7 +73,7 @@ bundle/                              # @zerobias-org/project-template-bundle (wo
 
 | Package | Template | Source |
 |---|---|---|
-| `zerobias/product_management` | Product Management project | the product management recipe: a `product`, four boards (Specs & Stories, Decisions & Questions, Mockups, Risks & Dependencies), three notebooks, seven Documents folders, `OPERATING.md` in the Documents root, the `product-management-project` skill in the Skills folder, a starter spec task |
+| `zerobias/product_management` | Product Management project | the product management recipe: a `product_management` project, four boards (Specs & Stories, Decisions & Questions, Mockups, Risks & Dependencies), three notebooks, seven Documents folders, `OPERATING.md` in the Documents root, the `product-management-project` skill in the Skills folder, a starter spec task |
 | `zerobias/spec_kit` | Spec Kit project | [GitHub Spec Kit](https://github.com/github/spec-kit) v1.4.2 (MIT): a `standard` evergreen project, boards Constitution, Specs (default), Plans, Tasks, three notebooks, five Documents folders, the five Spec Kit templates with their MIT license, `OPERATING.md`, the `spec-kit-project` skill, and two starter tasks |
 | `zerobias/requirements_program` | Requirements program | a `program` (evergreen, shows in the Programs App) that defines the requirements for one area and measures projects against them: boards Requirements (default), Decisions & Questions, Conformance, two notebooks, six Documents folders, a requirement register and a conformance report template, `OPERATING.md`, the `requirements-program` skill, and three starter tasks |
 | `zerobias/audit_readiness` | Compliance audit readiness project | an `assessment` (fixed-term) that prepares for one external audit, such as SOC 2 or ISO 27001: boards Gaps & Remediation (default), Evidence, Auditor Requests, Decisions & Questions, three notebooks, seven Documents folders, a scope file and an audit calendar, `OPERATING.md`, the `audit-readiness` skill, and four starter tasks. No framework text is copied |
@@ -130,9 +130,9 @@ From `zerobias-com/platform` `api/src/api/schemas/project/newProject.yml`:
 | `standard` | yes | yes | |
 | `program` | no | yes | |
 | `coordination_program` | no | yes | |
-| `product` | no | yes | can have a `product` parent |
+| `product_management` | no | yes | can have a `product_management` parent |
 | `portfolio` | no | yes | |
-| `phase` | yes | no | needs a `coordination_program` or `product` ancestor |
+| `phase` | yes | no | needs a `coordination_program` or `product_management` ancestor |
 | `assessment` | yes | no | |
 | `engagement`, `rfp`, `pilot` | yes | yes | |
 

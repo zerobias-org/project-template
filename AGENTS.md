@@ -32,9 +32,9 @@ To add a second template to an existing package:
    - `standard`: `fixed-term` or `evergreen`
    - `program`: `evergreen` only
    - `coordination_program`: `evergreen` only
-   - `product`: `evergreen` only
+   - `product_management`: `evergreen` only
    - `portfolio`: `evergreen` only
-   - `phase`: `fixed-term` only, and the project needs a `coordination_program` or `product` ancestor
+   - `phase`: `fixed-term` only, and the project needs a `coordination_program` or `product_management` ancestor
    - `assessment`: `fixed-term` only
    - `engagement`, `rfp`, `pilot`: `fixed-term` or `evergreen`
 3. Give exactly one board `isDefault: true`. The project's default board gets that board's name.
